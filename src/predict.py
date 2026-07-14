@@ -1,8 +1,10 @@
 import joblib
 from preprocess import clean_text
+import os
 
-model = joblib.load('../models/lr_tfidf_model.pkl')
-vectorizer = joblib.load('../models/tfidf_vectorizer.pkl')
+BASE_DIR = os.path.dirname(__file__)
+model = joblib.load(os.path.join(BASE_DIR, '..', 'models', 'lr_tfidf_model.pkl'))
+vectorizer = joblib.load(os.path.join(BASE_DIR, '..', 'models', 'tfidf_vectorizer.pkl'))
 
 def predict_review(text, top_n=5):
     cleaned = clean_text(text)
